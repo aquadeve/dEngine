@@ -15,17 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Install MSBuild
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
-    # Restore NuGet
-    - name: Restore NuGet
+    - name: Setup NuGet
       uses: nuget/setup-nuget@v2
 
-    - name: Restore dependencies
+    - name: Restore NuGet packages
       run: nuget restore dEngine.sln
 
-    # Build MSBuild
     - name: Build
-      run: msbuild dEngine.sln /p:Configuration=Release
+      run: msbuild dEngine.sln /p:Configuration=Release /p:Platform="Any CPU"
