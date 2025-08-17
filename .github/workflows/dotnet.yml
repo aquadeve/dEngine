@@ -24,5 +24,7 @@ jobs:
     - name: Restore NuGet packages
       run: nuget restore dEngine.sln
 
+    - name: Install .NET Framework 4.0 Developer Pack
+      run: choco install netfx-4.0.3-devpack -y
     - name: Build
       run: msbuild dEngine.sln /p:Configuration=Release /p:Platform="Any CPU"
